@@ -13,12 +13,3 @@
         or
         ( ansible_distribution == "CentOS" and
           ansible_memfree_mb < 1024 )
-
-    - name: show register on random module
-      user:
-        name: clarence
-      register: output
-    
-    - name: show register result
-      debug:
-        var: output

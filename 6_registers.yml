@@ -1,0 +1,31 @@
+---
+- name: Task control - loop and when
+  hosts: servers
+  vars_prompt:
+    - name: username
+      prompt: which username are you looking for?
+      private: no
+
+  tasks:
+
+    - name: Read /etc/passwd
+      shell: cat /etc/passwd
+      register: passwd_contents
+
+    - name: Show /etc/passwd contents through passwd_contents
+      debug:
+        var: passwd_contents
+
+    - name: read user register
+      user:
+        name: "{{ username }}"
+      register: output
+    
+    - name: show register result
+      debug:
+        var: output
+
+    - name: In passwd?
+      debug:
+        msg: echo "passwd contains user {{ username }}"
+      when: passwd_contents.stdout.find(username) != -1
