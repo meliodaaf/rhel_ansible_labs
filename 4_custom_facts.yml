@@ -1,0 +1,19 @@
+---
+- name: Add custom facts
+  hosts: control_node
+  
+  tasks:
+  - name: Create the directory
+    file:
+      name: /etc/ansible/facts.d
+      state: directory
+  - name: Create the fact file
+    copy:
+      content: |
+        [facts]
+        type=production
+      dest: /etc/ansible/facts.d/local.fact
+
+  - name: Test case
+    debug:
+      msg: ansible control_node -m setup -a "filter=ansible_local"
