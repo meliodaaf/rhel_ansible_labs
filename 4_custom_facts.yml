@@ -24,4 +24,4 @@
   tasks:
   - name: Print control_node facts
     debug:
-      msg: {{ ansible_facts }}
+      msg: ansible_facts
