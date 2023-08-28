@@ -18,8 +18,6 @@
     debug:
       msg: ansible control_node -m setup -a "filter=ansible_local"
 
-
----
 - name: Print facts
   hosts: control_node
 
