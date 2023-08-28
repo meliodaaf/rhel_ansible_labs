@@ -1,0 +1,13 @@
+servers:
+  children:
+    control_node:
+      hosts:
+        rhel-control.local:
+    remote_nodes:
+      hosts:
+        rhel-node-1.local:
+    rhel_nodes:
+      hosts:
+        rhel-control.local:
+        rhel-node-1.local:
+        

@@ -1,0 +1,12 @@
+---
+- name: create a user
+  hosts: servers
+  vars_files:
+    - vault_lab/user.yml
+    - vault_lab/secret.yml
+
+  tasks:
+    - name: create user {{ user }}
+      user:
+        name: "{{ user }}"
+    - shell: echo {{ password }} | passwd --stdin {{ user }}

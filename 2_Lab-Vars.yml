@@ -1,0 +1,11 @@
+---
+- name: Create users based on group_vars and host_vars
+  hosts: servers
+
+  tasks:
+    - name: Create admin users
+      user:
+        name: "{{ user }}"
+        password: "{{ user_password | password_hash('sha512') }}"
+        shell: /bin/bash
+

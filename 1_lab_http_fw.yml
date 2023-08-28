@@ -1,0 +1,30 @@
+---
+- name: Setup httpd
+  hosts: rhel_nodes
+  tasks:
+    - name: Use dnf to install httpd and firewalld
+      dnf:
+        name:
+          - httpd
+          - firewalld
+        state: latest
+    - name: Use copy to generate index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: "Hello World - Lab 4"
+    - name: Use service to activate httpd
+      service:
+        name: httpd
+        state: started
+    - name: Use service to activate firewalld
+      service:
+        name: firewalld
+        state: started
+    - name: Open ports in firewall
+      firewalld:
+        service: http
+        permanent: true
+        state: enabled
+        immediate: true
+
+
