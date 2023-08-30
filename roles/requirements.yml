@@ -1,0 +1,4 @@
+# from Ansible Galaxy
+# Install using ansible-galaxy install -r requirements.yml
+- src: geerlingguy.docker
+- src: geerlingguy.nginx

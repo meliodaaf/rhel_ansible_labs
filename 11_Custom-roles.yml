@@ -1,0 +1,6 @@
+---
+- name: install issue
+  hosts: servers
+
+  roles:
+    - issue

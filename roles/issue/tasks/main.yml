@@ -1,0 +1,6 @@
+---
+# tasks file for issue
+- name: Install issue
+  templates:
+    src: issue.j2
+    dest: /etc/issue
