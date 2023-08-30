@@ -1,2 +1,3 @@
 ---
 # tasks file for install-tools
+- include: yum-stuff.yml

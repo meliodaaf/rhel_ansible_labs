@@ -4,3 +4,4 @@
 
   roles:
     - issue
+    - install-tools

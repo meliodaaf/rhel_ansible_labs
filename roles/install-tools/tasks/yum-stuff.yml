@@ -1,0 +1,11 @@
+---
+- name: Install packages
+  become: true
+  become_method: sudo
+  package:
+    dnf:
+      - jq
+      - exiftool
+      - httpd
+      - firewalld
+    state: latest
