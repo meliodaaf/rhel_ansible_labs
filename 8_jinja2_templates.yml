@@ -14,4 +14,4 @@
     - name: use template to copy FTP config
       template:
         src: vsftpd.j2
-        dest: /etc/vsftpf/vsftpd.conf
+        dest: /etc/vsftpd/vsftpd.conf
