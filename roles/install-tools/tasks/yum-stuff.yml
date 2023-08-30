@@ -6,5 +6,4 @@
     name:
       - httpd
       - firewalld
-      - exiftool
       - jq
