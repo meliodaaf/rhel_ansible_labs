@@ -10,7 +10,7 @@
       no_log: True
       set_fact:
         new_authkey: ""
-        new_privkey: '"
+        new_privkey: ""
         
     - name: Update snmpd.conf in Cyclades
       ansible.builtin.lineinfile:
