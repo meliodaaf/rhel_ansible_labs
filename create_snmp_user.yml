@@ -1,0 +1,31 @@
+---
+- name: Create SNMP User
+  gather_facts: false
+  hosts: all
+  connection: local
+
+  tasks:
+    - name: write in string variables new password
+      delegate_to: localhost
+      no_log: True
+      set_fact:
+        new_authkey: ""
+        new_privkey: '"
+        
+    - name: Update snmpd.conf in Cyclades
+      ansible.builtin.lineinfile:
+        path: /etc/snmp/snmpd.conf
+        line: rouser SNMPUser priv
+
+    - name: Update snmpd.local.conf in Cyclades
+      ansible.builtin.lineinfile:
+        path: /etc/snmp/snmpd.local.conf
+        line: createUser SNMPUser SHA {{ new_authkey }} AES {{ new_privkey }}
+      notify:
+        - restart_web
+
+  handlers:
+    - name: restart_web
+      service:
+        name: snmpd
+        state: restarted 
